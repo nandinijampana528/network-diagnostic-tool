@@ -1,139 +1,80 @@
-# 🌐 Network Diagnostic & Monitoring Tool
+# Network Diagnostic & Monitoring Tool
 
-A lightweight Python utility to monitor internal intranet nodes via automated **ping checks** and **port scanning**. Generates a clean HTML status report and maintains a timestamped log file — built for enterprise intranet environments.
-
----
-
-## 📸 Sample Report
-
-| Label | IP | Ping | Port 80 | Port 443 | Status |
-|---|---|---|---|---|---|
-| Main Gateway | 192.168.1.1 | ✅ OK | ✅ Open | ✅ Open | 🟢 UP |
-| Web Server | 192.168.1.10 | ✅ OK | ✅ Open | ❌ Closed | 🟢 UP |
-| Database Server | 192.168.1.11 | ❌ FAIL | ❌ Closed | ❌ Closed | 🔴 DOWN |
+A Python script I built to monitor internal network nodes. It pings a list of IPs, checks if common ports are open, and generates a simple HTML report showing which systems are up or down. Logs are saved with timestamps so you can track history.
 
 ---
 
-## ✨ Features
+## Why I built this
 
-- ✅ **Ping Check** — Verifies if a host is reachable on the network
-- ✅ **Port Scanning** — Checks status of ports 80, 443, 22, 8080
-- ✅ **Hostname Resolution** — Resolves IPs to hostnames automatically
-- ✅ **HTML Report** — Auto-generates a visual UP/DOWN status report
-- ✅ **Logging** — Timestamped logs saved to `monitor.log`
-- ✅ **Configurable Hosts** — Easily add/remove hosts via `hosts.txt`
-- ✅ **Cross-platform** — Works on Windows, Linux, and macOS
+At work I often had to manually check if internal servers or network devices were reachable. This tool automates that — just add your IPs to a file and run the script. It tells you what's up, what's down, and saves a report you can open in the browser.
 
 ---
 
-## 🗂️ Project Structure
+## What it does
 
-```
-network-diagnostic-tool/
-├── monitor.py          # Main monitoring script
-├── hosts.txt           # List of hosts/IPs to monitor
-├── requirements.txt    # Python dependencies
-├── report.html         # Auto-generated HTML report (after running)
-├── monitor.log         # Auto-generated log file (after running)
-└── README.md           # Project documentation
-```
+- Pings each host to check if it's reachable
+- Scans ports 80, 443, 22, 8080
+- Tries to resolve IP to hostname
+- Saves results to `monitor.log` with timestamps
+- Generates `report.html` — a simple status dashboard
 
 ---
 
-## ⚙️ Setup & Usage
+## Sample Output 
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/nandinijampana528/network-diagnostic-tool.git
-cd network-diagnostic-tool
-```
+![alt text](image.png)
 
-### 2. Install dependencies
+## Setup
+
+**Install dependencies:**
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Configure hosts
-Edit `hosts.txt` and add your internal IPs or hostnames:
+**Add your hosts to `hosts.txt`:**
 ```
 192.168.1.1, Main Gateway
 192.168.1.10, Web Server
 192.168.1.20, Mail Server
 ```
 
-### 4. Run the tool
+**Run it:**
 ```bash
 python monitor.py
 ```
 
-### 5. View the report
-Open `report.html` in any browser to see the visual status dashboard.
+Then open `report.html` in your browser.
 
 ---
 
-## 🕐 Schedule Automated Runs
+## Schedule it (optional)
 
-### Linux/macOS (cron job — every 5 minutes)
+**Linux/macOS** — run every 5 minutes via cron:
 ```bash
 crontab -e
-# Add this line:
+# add this line:
 */5 * * * * /usr/bin/python3 /path/to/monitor.py
 ```
 
-### Windows (Task Scheduler)
-1. Open **Task Scheduler** → Create Basic Task
-2. Set trigger: **Every 5 minutes**
-3. Action: `python C:\path\to\monitor.py`
+**Windows** — use Task Scheduler, set it to run `monitor.py` every 5 minutes.
 
 ---
 
-## 🛠️ Configuration
+## Config options
 
-You can change these settings at the top of `monitor.py`:
-
-| Variable | Default | Description |
-|---|---|---|
-| `HOSTS_FILE` | `hosts.txt` | Path to hosts list |
-| `LOG_FILE` | `monitor.log` | Path to log output |
-| `REPORT_FILE` | `report.html` | Path to HTML report |
-| `PORTS_TO_CHECK` | `[80, 443, 22, 8080]` | Ports to scan |
-| `PING_COUNT` | `2` | Number of ping attempts |
+At the top of `monitor.py` you can change:
+- `PORTS_TO_CHECK` — which ports to scan
+- `PING_COUNT` — how many ping attempts
+- `LOG_FILE` / `REPORT_FILE` — output file names
 
 ---
 
-## 📋 Sample Log Output
+## Tech used
 
-```
-2024-01-15 10:30:01 | INFO | Starting diagnostics for 10 host(s)...
-2024-01-15 10:30:01 | INFO | Checking Main Gateway (192.168.1.1)...
-2024-01-15 10:30:02 | INFO |   → Main Gateway (192.168.1.1): UP
-2024-01-15 10:30:02 | INFO | Checking Web Server (192.168.1.10)...
-2024-01-15 10:30:03 | INFO |   → Web Server (192.168.1.10): UP
-2024-01-15 10:30:03 | INFO | Checking Database Server (192.168.1.11)...
-2024-01-15 10:30:05 | INFO |   → Database Server (192.168.1.11): DOWN
-2024-01-15 10:30:05 | INFO | Report saved to 'report.html'
-```
+Python 3, `socket`, `subprocess`, `logging`, `jinja2`
 
 ---
 
-## 🧰 Tech Stack
+## Author
 
-- **Python 3.x**
-- `socket` — Port scanning & hostname resolution
-- `subprocess` — Ping execution
-- `logging` — Log management
-- `jinja2` — HTML report generation
-
----
-
-## 👩‍💻 Author
-
-**Nandini Jampana**  
-Engineer | Cybersecurity & Network Administration  
-📧 nandinijampana528@gmail.com
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
+Nandini Jampana — nandinijampana528@gmail.com

@@ -204,7 +204,7 @@ def generate_report(results):
         ports=PORTS_TO_CHECK,
         generated_at=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     )
-    with open(REPORT_FILE, "w") as f:
+    with open(REPORT_FILE, "w", encoding="utf-8") as f:
         f.write(html)
     logging.info(f"Report saved to '{REPORT_FILE}'")
 
