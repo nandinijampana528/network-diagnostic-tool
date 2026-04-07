@@ -44,7 +44,7 @@ network-diagnostic-tool/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/network-diagnostic-tool.git
+git clone https://github.com/nandinijampana528/network-diagnostic-tool.git
 cd network-diagnostic-tool
 ```
 
