@@ -7,18 +7,18 @@
 #192.168.1.2, Backup Gateway
 
 # ── Servers ──
-192.168.100.28, Web Server
-192.168.100.240, Database Server
+192.168.1.8, Web Server
+192.168.10.24, Database Server
 #192.168.1.12, File Server
 #192.168.1.20, Mail Server
 
 # ── Network Devices ──
-192.168.100.5, Core Switch
+192.168.1.12, Core Switch
 #192.168.1.51, Distribution Switch
 
 # ── Workstations (sample) ──
-192.168.100.20, Workstation-01
-192.168.100.68, Workstation-02
+192.168.100.2, Workstation-01
+192.168.100.8, Workstation-02
 
 # ── External (optional) ──
 8.8.8.8, Google DNS
